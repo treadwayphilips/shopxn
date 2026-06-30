@@ -1,0 +1,12 @@
+const router = require('express').Router();
+const { getDashboard, getProducts, createProduct, updateProduct, deleteProduct, getOrders, updateOrderStatus, getUsers } = require('../controllers/adminController');
+const { adminOnly } = require('../middleware/auth');
+router.get('/dashboard', adminOnly, getDashboard);
+router.get('/products', adminOnly, getProducts);
+router.post('/products', adminOnly, createProduct);
+router.put('/products/:id', adminOnly, updateProduct);
+router.delete('/products/:id', adminOnly, deleteProduct);
+router.get('/orders', adminOnly, getOrders);
+router.put('/orders/:id/status', adminOnly, updateOrderStatus);
+router.get('/users', adminOnly, getUsers);
+module.exports = router;
